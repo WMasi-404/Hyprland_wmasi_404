@@ -1,0 +1,120 @@
+{
+    "layer": "top",
+    "width": 1900,
+    "margin-top": 5,
+    "margin-bottom": 1,
+
+    // Modules layout
+    "modules-left": ["custom/power", "cpu", "memory", "disk", "custom/media"], 
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["network", "pulseaudio", "battery", "clock"],
+
+    // Sourced modules
+    "pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 2,
+        "format": "{icon} {volume}%",
+        "format-muted": "<span color='#FFFFFF'></span>",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "format-icons": {
+            "default": ["<span color='#FFFFFF'></span>", "<span color='#FFFFFF'> </span>", "<span color='#FFFFFF'> </span>"] 
+        }
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "on-click": "activate",
+        "all-outputs": true,
+        "active-only": false,
+        "persistent-workspaces": {
+            "1": [], "2": [], "3": [], "4": [], "5": [], "6": []
+        },
+        "format": "{icon}",
+        "format-icons": {
+            "active": "<span color='#ffffff' font='14'>󰢹</span>",
+            "empty": "<span color='#FFFFFF' font='12'>󰇄</span>",
+            "persistent": "󰧨"
+        }
+    },
+
+    "network": {
+        "on-click": "kitty --class nmtui_float -o color5=#000000 -o color13=#000000 -o selection_background=#000000 -o selection_foreground=#ffffff -e env NEWT_COLORS='root=black,white;window=black,white;shadow=white,white;border=black,white;title=black,white;label=black,white;listbox=black,white;actlistbox=white,black;button=white,black;compactbutton=white,black;actcheckbox=white,black;checkbox=black,white;entry=white,black;textbox=black,white' nmtui",
+        "tooltip": false,
+        "format-wifi": "<span color='#FFFFFF'> </span> {bandwidthDownBits}",
+        "format-ethernet": "<span color='#FFFFFF'>󰈀</span>",
+        "format-disconnected": "<span color='#f7768e'>󰖪 </span>"
+    },
+
+    "backlight": {
+        "tooltip": false,
+        "format": " {}%",
+        "interval": 1,
+        "on-scroll-up": "light -A 5",
+        "on-scroll-down": "light -U 5"
+    },
+
+    "battery": {
+        "states": { "good": 95, "warning": 30, "critical": 10 },
+        "format": "{icon}  <span color='#FFFFFF'>{capacity}%</span>",
+        "format-charging": "<span color='#FFFFFF' font='14'>󱎗</span> <span color='#F1F1F1' font='10'>{capacity}%</span>",
+        "format-plugged": " <span color='#FFFFFF'>{capacity}</span>%",
+        "format-alt": "<span color='#FFFFFF'>{time}</span> {icon}",
+        "format-icons": [
+            "<span color='#FFFFFF'></span>", 
+            "<span color='#FFFFFF'></span>", 
+            "<span color='#FFFFFF'></span>", 
+            "<span color='#FFFFFF'></span>", 
+            "<span color='#FFFFFF'></span>"
+        ]
+    },
+    "clock": {
+        "timezone": "America/Argentina/Salta",
+        "tooltip": true,
+        "interval": 60,
+        "format": "{:%H:%M %p}",
+        "tooltip-format": "{:%Y-%m-%d}"
+    },
+
+    "cpu": {
+        "interval": 15,
+        "format": "<span color='#FFFFFF'> </span> {}%",
+        "max-length": 10
+    },
+
+    "disk": {
+        "format": "<span color='#FFFFFF'> </span> {used}",
+        "interval": 1
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "<span color='#FFFFFF'> </span> {used}GiB",
+        "max-length": 10
+    },
+
+    "custom/media": {
+        "interval": 1,
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 30,
+        "format-icons": {
+            "default": "<span color='#FFFFFF'>󰎄</span>"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause"
+    },
+
+    "custom/power": {
+        "format": "<span color='#ffffff' font='16'>  </span>",
+        "on-click": "wlogout"
+    },
+
+    "custom/updates": {
+        "format": "{} Update(s)",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 15,
+        "on-click": "kitty -e paru -Syu && notify-send 'Sistema actualizado'"
+    }
+}
