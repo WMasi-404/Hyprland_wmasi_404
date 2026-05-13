@@ -1,5 +1,7 @@
 * {
 
+    margin-left: 1px;
+
     border: none;
 
     border-radius: 10px;
@@ -10,19 +12,19 @@
 
     min-height: 10px;
 
+    margin-right: 4px;
+
 }
 
 
 window#waybar {
 
-    background-color: rgba(30, 30, 46, 0.7); /* Gris oscuro azulado con 70% de opacidad */
+    background-color: rgba(243, 243, 243, 0.85); /* El blanco de Windows */
 
-    border-radius: 10px; /* Si quieres la barra completa, o 10px si es flotante */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4); /* Línea gris clarita */
 
+    border-radius: 0px;
 }
-
-
-/* Busca estos bloques y cambia el color y el fondo */
 
 #cpu, #memory, #disk, #clock, #pulseaudio {
 
@@ -459,18 +461,23 @@ window#waybar.hidden {
 
     padding-left: 10px;
 
-    padding-right: 10px;
+    margin-bottom: 6px;
 
-    margin-bottom: 0px;
+    margin-right: 10px;
+
+    padding-right: 10px;
 
     border-radius: 10px;
 
+    font-size: 14px;
+
+    font-weight: bold;
+
     transition: none;
 
-    color: #161320;
+    color: #F1F1F1;
 
-    background: #E8A2AF;
-
+    background: #222330;
 }
 
 
@@ -493,5 +500,59 @@ window#waybar.hidden {
     color: #161320;
 
     background: #F2CDCD;
+
+}
+
+#bluetooth {
+
+    margin-top: 6px;
+
+    margin-left: 8px;
+
+    padding-left: 10px;
+
+    padding-right: 10px;
+
+    margin-bottom: 6px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight:bold;
+
+    transition: none;
+
+    color: #FFFFFF;
+
+    background: #222330;
+
+}
+
+#custom-notification {
+
+    margin-top: 6px;
+
+    margin-left: 8px;
+
+    padding-left: 10px;
+
+    margin-bottom: 6px;
+
+    margin-right: 10px;
+
+    padding-right: 10px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: none;
+
+    color: #F1F1F1;
+
+    background: #222330;
 
 }
